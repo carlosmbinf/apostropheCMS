@@ -1,0 +1,21 @@
+{% import "macros/utils.html" as utils %}
+
+
+
+
+<{{ data.widget.element }} id="{{ data.widget.id }}" class="{{ data.widget.class}}"	style="{{ data.widget.estilo }}" {{ data.widget.caracteristicas }}	>
+
+{% if not data.widget.texto %}
+			{{ utils.modulos(data.widget, 'modulo', 'full') }}
+			{% else %}
+			{{ data.widget.texto }}
+			{% endif %}
+
+
+</{{ data.widget.element }}>
+	
+
+<style type="text/css">
+  {{ data.widget.style }}
+</style>
+

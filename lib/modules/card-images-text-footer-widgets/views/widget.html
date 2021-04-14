@@ -1,0 +1,46 @@
+{% import "macros/utils.html" as utils %}
+
+<style type="text/css">
+  {{ data.widget.style }}
+</style>
+
+<a  id="{{ data.widget.id }}" href="{{ data.widget.link }}" style="background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+    ">
+
+  
+    <div class="column-inner" style="box-sizing: border-box;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    background: 0 0;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+    outline: 0;">
+    
+      <div class="card shadow" style="box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.03); width: 100%">
+        <div class="" style="color: #858793;background-color:#fff; " >
+      {{ utils.cargarmultimedia(data.widget, 'imag', 'full') }}
+
+        </div>
+        <div class="" style="color: #6c757d!important; background-color:#fff; padding: 20px; padding-top: 5px; padding-bottom: 10px">
+          <div class="" style="text-align: left;">
+        {{ utils.cargarmultimedia(data.widget, 'header', 'full') }}
+          </div>
+          
+        </div>
+        <div class="card-footer d-flex justify-content-center align-items-center" style="color: #858793;">
+           {{ utils.cargarmultimedia(data.widget, 'footer', 'full') }}
+          </div>
+      </div>  
+      
+
+    
+  
+</div>
+
+</a>

@@ -1,0 +1,16 @@
+{#
+  This is an example home page template. It inherits and extends a layout template
+  that lives in the top-level views/ folder for convenience
+#}
+
+{% extends "layout.html" %}
+{% import "macros/utils.html" as utils with context %}
+{% block beforeMain %}
+  <div class="block hero">
+    <div class="inner">
+      <div class="hero-text">
+        {{ utils.modulos(data.page, 'modulos', 'one-half') }}
+      </div>
+    </div>
+  </div>
+{% endblock %}

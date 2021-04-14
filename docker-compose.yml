@@ -1,0 +1,46 @@
+version: '3.6'
+
+services:
+  mongo:
+    image: 'mongo:latest'
+    container_name: besthingsdb
+    volumes:
+      - 'db:/data/db'
+      - 'configdb:/data/configdb'
+    ports:
+      - '127.0.0.1:27017:27017'
+    restart: unless-stopped
+
+  besthingscms:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    image: 'besthingscms:latest'
+    container_name: besthingscms
+    ports:
+      - '3000:3000'
+    volumes:
+      - data:/app/data
+      - uploads:/app/public/uploads
+    links:
+      - mongo:mongo
+    depends_on:
+      - mongo
+    env_file:
+      - var.env
+    secrets:
+      - client_id
+      - client_secret
+    restart: unless-stopped
+
+secrets:
+  client_id:
+    file: ./client_info/clientID.txt
+  client_secret:
+    file: ./client_info/clientSecret.txt
+
+volumes:
+  db:
+  configdb:
+  data:
+  uploads:

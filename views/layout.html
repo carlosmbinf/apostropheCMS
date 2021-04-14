@@ -1,0 +1,177 @@
+{# Automatically extends the right outer layout and also handles AJAX siutations
+#} {% extends data.outerLayout %} {% block title %} {# Create a useful,
+SEO-friendly title tag based on what we have #} {% if data.piece %} {{
+data.piece.title }} {% elseif data.page %} {{ data.page.title }} {% else %} {{
+apos.log('Looks like you forgot to override the title block in a template that
+does not have access to an Apostrophe page or piece.') }} {% endif %} {%
+endblock %} {% block extraHead %} {# This block outputs its contents in the HTML
+document's
+<head>
+  . It is a good place to put extra
+  <script>
+     <link> and <meta> tags.
+      #}
+
+
+    <link rel="shortcut icon" href="resources/img/favicon.png" type="image/png">
+    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+            crossorigin="anonymous">
+    <!-- Swiper -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
+
+        <!-- custom styles -->
+       <link rel="stylesheet" href="main.css">
+
+        <!--[if IE]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+  </script>
+  <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-migrate-3.0.1.min.js"></script>
+  <script
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"
+    integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"
+    integrity="sha256-bX3ZexuPmm3WbMkCXTtmA9NxFzcS0QP6Jz4gowE6U3A="
+    crossorigin="anonymous"
+  ></script>
+
+  <!--   <script>
+          window.onscroll = function() {myFunction()};
+
+          function myFunction() {
+            if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350) {
+              document.getElementById("myImg").className = "slideUp";
+            }
+          }
+        </script> -->
+  <!-- <script type="text/javascript">
+  var temp = $("#main-navbar").css("display");
+  if (temp == "none"){
+    $("#logo").css({
+
+    justify-content: center;
+    });
+  }
+
+</script> -->
+  {% endblock %} {% block beforeMain %} {# We recommend you use the beforeMain
+  block for global page components like headers or navigation. #}
+
+  <nav
+    id="main-nav-inner"
+    style="position: fixed; width: 100%; background: #f7ae38"
+    class="navbar navbar-light navbar-expand-lg p-0"
+  >
+    <div
+      class="col-md-12 col-lg-2 d-flex align-items-center"
+      style="min-height: 80px; max-height: 80px; top: 0; position: static"
+    >
+      <button
+        class="navbar-toggler mb-2 mt-2 mr-2"
+        style="
+          z-index: 10;
+          right: 20px;
+          position: fixed;
+          /*background-color: #a09a9a;*/
+        "
+        type="button"
+        data-toggle="collapse"
+        data-target="#main-navbar"
+        aria-controls="main-navbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div
+        id="logo"
+        class="logo d-flex justify-content-left col-md-12 col-lg-2"
+        style="transition: all 1s ease 0s"
+      >
+        <a
+          class="nav-link text-center"
+          style="
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 1em;
+            background-color: white;
+            border-radius: 0px 0px 10px 10px;
+          "
+          href="/"
+        >
+          {{ apos.singleton(data.page, 'logoHeader', 'apostrophe-images', {
+          aspectRatio: [ 1, 1 ], limit: 1, size: 'original' }) }}
+        </a>
+      </div>
+    </div>
+
+    <div
+      class="collapse navbar-collapse w-100"
+      id="main-navbar"
+      style="
+        transition: all 0.3s ease 0s;
+        min-height: 80px;
+        max-height: calc(100vh - 80px);
+      "
+    >
+      <ul
+        class="tabs col-11 d-flex justify-content-end navbar-nav container mr-2"
+        style="text-align: right"
+      >
+        <li
+          class="nav-item {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or data.home._id == data.page._id) %} active {% endif %}"
+          style="margin-right: 10px"
+        >
+          <a href="{{ data.home._url }}">{{ data.home.title }} </a>
+        </li>
+
+        {% for tab in data.home._children %}
+        <li
+          class="nav-item {% if data.page and (apos.pages.isAncestorOf(tab, data.page) or tab._id == data.page._id) %} active {% endif %}"
+          style="margin-right: 10px; margin-left: 10px"
+        >
+          <a href="{{ tab._url }}">{{ tab.title }}</a>
+        </li>
+        {% endfor %}
+        
+  {% if not data.user %}
+  <li class="nav-item">
+       <a class="login-link" href="{{ apos.prefix }}/login">Login</a>
+  </li>
+     
+      {% endif %}
+      </ul>
+
+    </div>
+  </nav>
+
+  {% endblock %} {% block main %} {# Usually, your page templates in the
+  apostrophe-pages module will override this block. It is safe to assume this is
+  where your page-specific content should go. #} {% endblock %} {% block
+  afterMain %} {# This would be a great place to put a global footer. #}
+
+  <footer
+    class="inner-page d-flex align-items-center"
+    style="
+      background: linear-gradient(
+          90deg,
+          #ffffff 39.23%,
+          rgba(255, 255, 255, 0) 100%
+        ),
+        #f7ae38;
+      box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.25);
+      height: 78px;
+    "
+  ></footer>
+
+  {% endblock %} {% block modals %} {% endblock %}
+</head>

@@ -1,0 +1,43 @@
+{% import "macros/utils.html" as utils %}
+
+<style type="text/css">
+  {{ data.widget.style }}
+</style>
+
+<div class="container">
+  <style type="text/css">
+    .title p{
+font-size: 2.3em;
+    }
+    .subtitle p{
+  font-size: 1.4rem;
+    }
+  </style>
+  <div class="title"  style="text-align: center; color: #858793; padding: 0px 10% 10px;">
+    
+       {{ utils.modulos(data.widget, 'title', 'full') }}
+    
+    
+  </div>
+
+  <div style="text-align: center; color: #858793;padding: 0px 10% 60px;">
+    
+       {{ utils.modulos(data.widget, 'content', 'full') }}
+   
+  </div>
+
+
+<!-- sanitizeHtml: {
+    allowedClasses: {
+      '*': ['nd-meta']
+    },
+    allowedAttributes: {
+      '*': ['style', 'href', 'target']
+    },
+    allowedTags: [ 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'p', 'a', 'ul',
+    'ol', 'nl', 'li', 'b', 'i', 'strong', 'em', 'strike', 'code', 'hr', 'br',
+    'div', 'table', 'thead', 'caption', 'tbody', 'tr', 'th', 'td', 'pre' ],
+  } -->
+
+
+</div>

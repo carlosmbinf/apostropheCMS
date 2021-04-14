@@ -1,0 +1,46 @@
+{% import "macros/utils.html" as utils %}
+
+<style type="text/css">
+  {{ data.widget.style }}
+</style>
+
+<div style="background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+    ">
+
+  
+  <div class="column-inner" style="box-sizing: border-box;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+        background: 0 0;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+    outline: 0;">
+    
+      <div class="" style="box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.03); width: 100%">
+        <div class="" style="color: #858793;background-color:#fff; " >
+      {{ utils.cargarmultimedia(data.widget, 'imag', 'full') }}
+
+        </div>
+        <div class="" style="color: #858793; background-color:#fff; padding: 30px;">
+          <h3 class="" style="text-align: center;">
+        {{ utils.cargarmultimedia(data.widget, 'title', 'full') }}
+          </h3>
+          <p class="" style="color: #858793;">
+           {{ utils.cargarmultimedia(data.widget, 'content', 'full') }}
+          </p>
+        </div>
+      </div>  
+      
+
+    
+  
+</div>
+
+</div>

@@ -1,0 +1,106 @@
+
+{% macro cardspequenos() %}
+{{ apos.area(data.page, 'cards', {
+  blockLevelControls: true,
+  widgets: {
+    'card-pequenos': {},
+    'two-column': {},
+    'three-column': {}
+  }
+}) }}
+{% endmacro %}
+
+{% macro cargarmultimedia(parent, name, imageSize) %}
+
+{{ apos.area(parent, name, {
+  widgets: {
+    
+    'apostrophe-images': {
+      limit: 1,
+      minSize: [ 200, 200 ],
+      addLabel: 'Inserte la imagen',
+      editLabel: 'Cambie la imagen',
+      controls: {
+        movable: false,
+        removable: false,
+        position: 'bottom-right'
+      }
+    },
+    'apostrophe-rich-text': {
+
+      toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Unlink', 'Anchor', 'Table', 'BulletedList', 'Blockquote', 'Strike', 'Subscript', 'Superscript', 'Split' , 'justify' ],
+      styles: [
+      { name: 'H3', element: 'h3' },
+      { name: 'H5', element: 'h5' }
+      ]
+    }
+  }
+}) }} 
+{% endmacro %}
+
+
+
+
+{% macro botonesgroup(parent, name, imageSize) %}
+{{ apos.area(parent, name, {
+  widgets: {
+    'bottom-gris': {},
+    'bottom-red': {}
+  }
+}) }}
+{% endmacro %}
+
+{% macro cardsgroup(parent, name, imageSize) %}
+{{ apos.area(parent, name, {
+  widgets: {
+    'card-images-text-footer': {},
+    'card-pequenos': {},
+    'card-solotexto': {}
+  }
+}) }}
+{% endmacro %}
+
+{% macro containersgroup(parent, name, imageSize) %}
+{{ apos.area(parent, name, {
+  widgets: {
+    'carousel': {},
+    'info-texts': {},
+    'section-dark': {},
+    'two-column': {},
+    'three-column': {}
+  }
+}) }}
+{% endmacro %}
+
+
+
+{% macro modulos(parent, name, imageSize) %}
+{{ apos.area(parent, name, {
+blockLevelControls: true,
+  widgets: {
+  'clearcode': {},
+    'containers': {},
+    'cards': {},
+    'botones': {},
+    'multimedia': {},
+    'clients':{}
+  }
+}) }}
+{% endmacro %}
+
+{% macro carousel(parent, name, imageSize) %}
+{{ apos.area(parent, name, {
+  widgets: {   
+    'apostrophe-images': {
+      minSize: [ 200, 200 ],
+      addLabel: 'Inserte la imagen',
+      editLabel: 'Cambie la imagen',
+      controls: {
+        movable: true,
+        removable: true,
+        position: 'bottom-right'
+      }
+    }
+  }
+}) }} 
+{% endmacro %}

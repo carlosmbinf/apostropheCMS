@@ -1,0 +1,40 @@
+{
+    "appName": "Generico",
+    "appInstance": "production",
+    "deployConfig": {
+        "deploy_data": {
+            "server": "34.206.179.26",
+            "userName": "mauromx3",
+            "password": "9eZG2sM6in",
+            "options": {
+                "database": "mauromx4",
+                "rowCollectionOnDone": true,
+                "useColumnNames": true,
+                "useUTC": false,
+                "appName": "generico",
+                "tdsVersion": "7_1",
+                "encrypt": false,
+                "requestTimeout": 0,
+                "debug": {
+                    "packet": true,
+                    "data": true,
+                    "payload": true,
+                    "token": false,
+                    "log": true
+                }
+            }
+        },
+        "poolConfig": {
+            "min": 1,
+            "max": 100,
+            "log": false,
+            "idleTimeout": 300000,
+            "connectionConfig": {
+                "options": {
+                    "connectTimeout": 300000,
+                    "requestTimeout": 300000
+                }
+            }
+        }
+    }
+}

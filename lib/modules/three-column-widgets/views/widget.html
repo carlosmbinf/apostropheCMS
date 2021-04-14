@@ -1,0 +1,48 @@
+{% import "macros/utils.html" as utils %}
+
+<style type="text/css">
+  {{ data.widget.style }}
+</style>
+
+<div style="{{ data.widget.estilo }}" class="{{ data.widget.clasecontainerprincipal }}">
+	<div class="container" >
+		<div class="row">
+
+			<div class="
+			{% if not data.widget.clase1 %}
+			col-12 col-lg-4 col-md-6
+			{% else %}
+			{{ data.widget.clase1}}
+			{% endif %}
+			"
+			style="">
+			{{ utils.modulos(data.widget, 'one', 'one-third') }}
+		</div>
+		<div class="
+		{% if not data.widget.clase2 %}
+		col-12 col-lg-4 col-md-6
+		{% else %}
+		{{ data.widget.clase2}}
+		{% endif %}
+		"
+		style="height: 100%">
+		{{ utils.modulos(data.widget, 'two', 'one-third') }}
+	</div>
+	<div 
+	class="
+	{% if not data.widget.clase3 %}
+	col-12 col-lg-4 col-md-6
+	{% else %}
+	{{ data.widget.clase3}}
+	{% endif %}
+	" style="height: 100%">
+	{{ utils.modulos(data.widget, 'three', 'one-third') }}
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+

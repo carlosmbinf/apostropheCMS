@@ -1,0 +1,12 @@
+{% import "macros/utils.html" as utils %}
+
+<style type="text/css">
+  {{ data.widget.style }}
+</style>
+
+<div id="{{ data.widget.id }}" class="{{ data.widget.clasecontainerprincipal }}" style="{{ data.widget.estilo }}">
+	<br>
+	{{ utils.modulos(data.widget, 'modulos-section-dark', 'full') }}
+
+</div>
+
